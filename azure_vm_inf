@@ -12,8 +12,7 @@ pipeline {
         }
 		stage ("terraform process") {
 			steps {
-                sh "ls"
-                sh "pwd"
+                sh "cd bavv-gi-cloud-terraform-azure-vm"
 				sh ('terraform init')
 			}
 		}
