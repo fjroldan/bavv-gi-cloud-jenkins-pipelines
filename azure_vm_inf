@@ -5,6 +5,7 @@ pipeline {
 	stages {
         stage ("provisioning") {
             steps {
+                sh "pwd"
                 sh "cd .."
                 sh "pwd"
                 sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
