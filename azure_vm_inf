@@ -7,12 +7,13 @@ pipeline {
             steps {
                 sh "echo '[INFO]: Clonando repositorio de terraform...'"
                 sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
-                sh "ls"
             }
         }
-		stage ("terraform init") {
+		stage ("terraform process") {
 			steps {
-				sh ('terraform init')
+                sh "ls"
+                sh "pwd"
+				sh "terraform init"
 			}
 		}
 	}
