@@ -6,9 +6,11 @@ pipeline {
         stage ("provisioning") {
             steps {
                 sh "cd .."
-                //sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
+                sh "pwd"
+                sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
                 sh "echo '[INFO]: Clonando repositorio de terraform...'"
                 sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
+                sh "ls"
             }
         }
 		stage ("terraform process") {
