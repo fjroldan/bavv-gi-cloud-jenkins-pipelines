@@ -5,24 +5,27 @@ pipeline {
 	stages {
         stage ("provisioning") {
             steps {
-                sh "rm -rf terra"
+                sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
                 sh "echo '[INFO]: Clonando repositorio de terraform...'"
-                sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
-                dir('terra') {
-                    git url: 'https://github.com/AtlasBID/bavv-gi-cloud-terraform-azure-vm.git'
-                }
+                //sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"            
+                //dir('terra') {
+                //    git url: 'https://github.com/AtlasBID/bavv-gi-cloud-terraform-azure-vm.git'
+                //}
             }
+        }
+        stage('checkout') {
+            git branch: 'main',url: 'https://github.com/AtlasBID/bavv-gi-cloud-terraform-azure-vm.git'
         }
 		stage ("terraform process") {
 			steps {
-                sh "cd terra/bavv-gi-cloud-terraform-azure-vm"
+                sh "cd bavv-gi-cloud-terraform-azure-vm"
                 sh "ls"
 				sh ('terraform init')
 			}
 		}
         stage ("clean") {
 			steps {
-                sh "rm -rf terra"
+                sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
 			}
 		}
 	}
