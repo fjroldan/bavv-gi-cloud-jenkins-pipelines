@@ -6,7 +6,6 @@ pipeline {
         stage ("provisioning") {
             steps {
                 sh "echo '[INFO]: Clonando repositorio de terraform...'"
-                sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
                 sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
             }
         }
@@ -15,6 +14,11 @@ pipeline {
                 sh "ls"
                 sh "pwd"
 				sh ('terraform init')
+			}
+		}
+        stage ("clean") {
+			steps {
+                sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
 			}
 		}
 	}
