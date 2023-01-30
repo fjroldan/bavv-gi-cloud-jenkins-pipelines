@@ -4,9 +4,11 @@ pipeline {
     // Define the staging
 	stages {
         stage ("provisioning") {
-            sh "echo '[INFO]: Clonando repositorio de terraform...'"
-            sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
-            sh "ls"
+            steps {
+                sh "echo '[INFO]: Clonando repositorio de terraform...'"
+                sh "git clone https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
+                sh "ls"
+            }
         }
 		stage ("terraform init") {
 			steps {
