@@ -6,7 +6,7 @@ pipeline {
         stage ("provisioning") {
             steps {
                 sh "pwd"
-                sh "cd .."
+                sh "cd /root/workspace"
                 sh "pwd"
                 sh "rm -rf bavv-gi-cloud-terraform-azure-vm"
                 sh "echo '[INFO]: Clonando repositorio de terraform...'"
