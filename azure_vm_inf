@@ -24,6 +24,12 @@ pipeline {
                     properties([
                         parameters([
                             string(
+                                defaultValue: 'https://....git', 
+                                name: 'REPO_PATH',
+                                trim: true,
+                                description: 'Ingrese el nombre path del repositorio.',
+                            ),
+                            string(
                                 defaultValue: 'pre.auto.tfvars.json', 
                                 name: 'CONFIG_FILE', 
                                 trim: true,
@@ -38,8 +44,9 @@ pipeline {
                         ])
                     ])
                 }
-                sh "echo '[INFO]: Obteniendo el repo de terraform...'"
+                sh "echo '[INFO]: Obteniendo el repo de terraform y del proyecto...'"
                 sh "git submodule add https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
+                sh "git submodule add https://github.com/fjroldan/bavv-bank-portfolio-infra-app.git"
                 sh "echo '[INFO]: LS'"
                 sh "ls"
             }
