@@ -54,6 +54,7 @@ pipeline {
                 sh "cp -r bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
                 sh "cd bavv-gi-cloud-terraform-azure-vm"
                 sh "ls"
+                sh "pwd"
                 sh "echo '[INFO]:[OK]: Espacio adecuado.'"
             }
         }
