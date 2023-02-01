@@ -56,6 +56,12 @@ pipeline {
                 sh "ls"
                 sh "pwd"
                 sh "echo '[INFO]:[OK]: Espacio adecuado.'"
+
+                sh script:'''
+                    cd ./bavv-gi-cloud-terraform-azure-vm
+                    ls
+                    pwd
+                '''
             }
         }
         // Define el terraform init stage
