@@ -51,7 +51,10 @@ pipeline {
                 sh "echo '[INFO]: LS'"
                 sh "ls"
                 sh "echo '[INFO]: Adecuendo espacio...'"
-                sh "cp -r bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
+                
+                //sh "cp -r bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
+                sh "mv bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm/infrastructure2"
+                
                 sh "cp -r bavv-bank-portfolio-infra-app/res bavv-gi-cloud-terraform-azure-vm"
                 sh "echo '[INFO]:[OK]: Espacio adecuado.'"
 
@@ -63,27 +66,35 @@ pipeline {
         }
         // Define el terraform init stage
 		stage ("Terraform init") {
-			steps {
-				sh ('terraform init -upgrade')
-			}
+            dir('bavv-gi-cloud-terraform-azure-vm') {
+                steps {
+                    sh ('terraform init -upgrade')
+                }
+            }
 		}
         // Define el terraform validate stage
         stage ("Terraform validate") {
-			steps {
-				sh ('terraform validate')
-			}
+            dir('bavv-gi-cloud-terraform-azure-vm') {
+                steps {
+                    sh ('terraform validate')
+                }
+            }
 		}
         // Define el terraform plan stage
         stage ("Terraform plan") {
-			steps {
-				sh ("terraform plan -var-file infrastructure/${params.CONFIG_FILE} -out main.tfplan")
-			}
+            dir('bavv-gi-cloud-terraform-azure-vm') {
+                steps {
+                    sh ("terraform plan -var-file infrastructure2/${params.CONFIG_FILE} -out main.tfplan")
+                }
+            }
 		}
         // Define el terraform apply stage
         stage ("Terraform apply") {
-			steps {
-				sh ("terraform apply -var-file infrastructure/${params.CONFIG_FILE} -auto-approve")
-			}
+            dir('bavv-gi-cloud-terraform-azure-vm') {
+                steps {
+                    sh ("terraform apply -var-file infrastructure2/${params.CONFIG_FILE} -auto-approve")
+                }
+            }
 		}
 	}
 }
