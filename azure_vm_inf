@@ -38,6 +38,7 @@ pipeline {
                         ])
                     ])
                 }
+                sh "echo 'hola'"
             }
         }
         // Define el terraform init stage
