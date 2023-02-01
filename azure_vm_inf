@@ -47,8 +47,14 @@ pipeline {
                 sh "echo '[INFO]: Obteniendo el repo de terraform y del proyecto...'"
                 sh "git submodule add https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
                 sh "git submodule add https://github.com/fjroldan/bavv-bank-portfolio-infra-app.git"
+                sh "echo '[INFO]:[OK]: Repo de terraform y del proyecto obtenidos.'"
                 sh "echo '[INFO]: LS'"
                 sh "ls"
+                sh "echo '[INFO]: Adecuendo espacio...'"
+                sh "cp bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
+                sh "cd bavv-gi-cloud-terraform-azure-vm"
+                sh "ls"
+                sh "echo '[INFO]:[OK]: Espacio adecuado.'"
             }
         }
         // Define el terraform init stage
