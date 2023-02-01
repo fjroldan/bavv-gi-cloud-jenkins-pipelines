@@ -66,32 +66,33 @@ pipeline {
         }
         // Define el terraform init stage
 		stage ("Terraform init") {
-            dir('bavv-gi-cloud-terraform-azure-vm') {
-                steps {
+            steps {
+                dir('bavv-gi-cloud-terraform-azure-vm') {
                     sh ('terraform init -upgrade')
                 }
             }
 		}
         // Define el terraform validate stage
         stage ("Terraform validate") {
-            dir('bavv-gi-cloud-terraform-azure-vm') {
-                steps {
+            steps {
+                dir('bavv-gi-cloud-terraform-azure-vm') {
                     sh ('terraform validate')
                 }
             }
 		}
         // Define el terraform plan stage
         stage ("Terraform plan") {
-            dir('bavv-gi-cloud-terraform-azure-vm') {
-                steps {
+            steps {
+                dir('bavv-gi-cloud-terraform-azure-vm') {
                     sh ("terraform plan -var-file infrastructure2/${params.CONFIG_FILE} -out main.tfplan")
                 }
             }
 		}
         // Define el terraform apply stage
         stage ("Terraform apply") {
-            dir('bavv-gi-cloud-terraform-azure-vm') {
-                steps {
+            steps {
+                dir('bavv-gi-cloud-terraform-azure-vm') {
+                    
                     sh ("terraform apply -var-file infrastructure2/${params.CONFIG_FILE} -auto-approve")
                 }
             }
