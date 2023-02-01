@@ -51,7 +51,7 @@ pipeline {
                 sh "echo '[INFO]: LS'"
                 sh "ls"
                 sh "echo '[INFO]: Adecuendo espacio...'"
-                sh "cp bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
+                sh "cp -r bavv-bank-portfolio-infra-app/infrastructure bavv-gi-cloud-terraform-azure-vm"
                 sh "cd bavv-gi-cloud-terraform-azure-vm"
                 sh "ls"
                 sh "echo '[INFO]:[OK]: Espacio adecuado.'"
