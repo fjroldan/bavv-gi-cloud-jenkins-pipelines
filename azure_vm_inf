@@ -38,7 +38,10 @@ pipeline {
                         ])
                     ])
                 }
-                sh "echo 'hola'"
+                sh "echo '[INFO]: Obteniendo el repo de terraform...'"
+                sh "git submodule add https://github.com/fjroldan/bavv-gi-cloud-terraform-azure-vm.git"
+                sh "echo '[INFO]: LS"
+                sh "ls"
             }
         }
         // Define el terraform init stage
